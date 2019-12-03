@@ -32,8 +32,4 @@ set(NETCDF_INC_DIR $ENV{NETCDF}/include)
 set(NETCDF_LIBDIR $ENV{NETCDF}/lib)
 set(NETCDF_LIBS -L$ENV{NETCDF}/lib -lnetcdff -lnetcdf)
 
-set(SIONLIB     $ENV{SIONLIB})
-set(SIONLIB_INC $ENV{SIONLIB_INC})
-set(SIONLIB_LIB $ENV{SIONLIB_LIB})
-
 message("")
