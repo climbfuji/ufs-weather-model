@@ -157,7 +157,7 @@ CCPP_CMAKE_FLAGS=$(trim "${CCPP_CMAKE_FLAGS}")
   cd ${BUILD_DIR}
 
   cmake ${PATHTR} ${CCPP_CMAKE_FLAGS}
-  make -j ${MAKE_THREADS} VERBOSE=1
+  make -j ${MAKE_THREADS}
   mv NEMS.exe ../${BUILD_NAME}.exe
   cp ${PATHTR}/modulefiles/${MACHINE_ID}/fv3 ../modules.${BUILD_NAME}
   cd ..
