@@ -172,10 +172,10 @@ elif [[ $MACHINE_ID = hera.* ]]; then
   QUEUE=debug
 #  ACCNR=fv3-cpu
   PARTITION=
-  dprefix=/scratch1/BMC/gmtb
-  DISKNM=$dprefix/ufs-weather-model/RT
-  STMP=$dprefix
-  PTMP=$dprefix
+  dprefix=/scratch1/NCEPDEV
+  DISKNM=$dprefix/nems/emc.nemspara/RT
+  STMP=$dprefix/stmp4
+  PTMP=$dprefix/stmp2
 
   # default scheduler on Hera
   SCHEDULER=slurm
