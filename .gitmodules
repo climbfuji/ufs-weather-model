@@ -1,15 +1,19 @@
 [submodule "FV3"]
 	path = FV3
-	url = https://github.com/NOAA-EMC/fv3atm
-	branch = develop
+	#url = https://github.com/NOAA-EMC/fv3atm
+	#branch = develop
+	url = https://github.com/climbfuji/fv3atm
+	branch = release_public_v2_atm_block_in_ccpp
 [submodule "NEMS"]
 	path = NEMS
 	url = https://github.com/NOAA-EMC/NEMS
 	branch = develop
 [submodule "FMS"]
 	path = FMS
-	url = https://github.com/NOAA-GFDL/FMS
-	branch = master
+	#url = https://github.com/NOAA-GFDL/FMS
+	#branch = master
+	url = https://github.com/climbfuji/FMS
+	branch = release_public_v2_atm_block_in_ccpp
 [submodule "WW3"]
 	path = WW3
 	url = https://github.com/NOAA-EMC/WW3
