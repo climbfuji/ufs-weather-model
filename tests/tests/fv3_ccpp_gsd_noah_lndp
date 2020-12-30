@@ -94,5 +94,6 @@ export LSOIL_LSM=4
 
 export LNDP_TYPE=2
 export N_VAR_LNDP=3
+export LNDP_EACH_STEP=.T.
 
 #export WLCLK=30
