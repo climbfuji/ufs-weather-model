@@ -65,7 +65,7 @@ if [ $BUILD = "true" ]; then
 
   sed -i -e '/affinity.c/d' ../../CMakeLists.txt
 
-  docker build --build-arg test_name=$TEST_NAME \
+  sudo docker build --build-arg test_name=$TEST_NAME \
                     --build-arg build_case=$BUILD_CASE \
                     --no-cache \
                     --squash --compress \
@@ -74,15 +74,15 @@ if [ $BUILD = "true" ]; then
 
 elif [ $RUN == "true" ]; then
 
-  docker run -d --rm -v DataVolume:/tmp minsukjinoaa/fv3-input-data:input-data-20210115
-  docker run -d -e test_case=${TEST_CASE} -v DataVolume:/home/builder/data/NEMSfv3gfs/input-data-20210115 --name my-container ${IMG_NAME}
+  sudo docker run -d --rm -v DataVolume:/tmp minsukjinoaa/fv3-input-data:input-data-20210115
+  sudo docker run -d -e test_case=${TEST_CASE} -v DataVolume:/home/builder/data/NEMSfv3gfs/input-data-20210115 --name my-container ${IMG_NAME}
 
   echo 'cache,rss,shmem' >memory_stat
   sleep 3
-  containerID=$(docker ps -q --no-trunc)
+  containerID=$(sudo docker ps -q --no-trunc)
   check_memory_usage $containerID >>memory_stat &
 
-  docker logs -f $containerID
-  exit $(docker inspect $containerID --format='{{.State.ExitCode}}')
+  sudo docker logs -f $containerID
+  exit $(sudo docker inspect $containerID --format='{{.State.ExitCode}}')
 
 fi
