@@ -1,7 +1,7 @@
 [submodule "FV3"]
   path = FV3
-  url = https://github.com/climbfuji/fv3atm
-  branch = ugwp_v0_v1_combined
+  url = https://github.com/mdtoy/fv3atm
+  branch = ugwp_v0_v1_combined_mike
 [submodule "NEMS"]
   path = NEMS
   url = https://github.com/NOAA-EMC/NEMS
