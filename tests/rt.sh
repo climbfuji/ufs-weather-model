@@ -34,8 +34,15 @@ rt_single() {
     [[ ${#line} == 0 ]] && continue
     [[ $line == \#* ]] && continue
 
-    if [[ $line =~ COMPILE && $line =~ ${MACHINE_ID} ]]; then
-      compile_line=$line
+    if [[ $line == COMPILE* ]] ; then
+      MACHINES=$(echo $line | cut -d'|' -f3 | sed -e 's/^ *//' -e 's/ *$//')
+      if [[ ${MACHINES} == '' ]]; then
+        compile_line=$line
+      elif [[ ${MACHINES} == -* ]]; then
+        [[ ${MACHINES} =~ ${MACHINE_ID} ]] || compile_line=$line
+      elif [[ ${MACHINES} == +* ]]; then
+        [[ ${MACHINES} =~ ${MACHINE_ID} ]] && compile_line=$line
+      fi
     fi
 
     if [[ $line =~ RUN ]]; then
@@ -282,9 +289,9 @@ elif [[ $MACHINE_ID = jet.* ]]; then
   ROCOTOCOMPLETE=$(which rocotocomplete)
   ROCOTO_SCHEDULER=slurm
 
-  export PATH=/lfs4/HFIP/hfv3gfs/software/ecFlow-5.5.3/bin:$PATH
-  export PYTHONPATH=/lfs4/HFIP/hfv3gfs/software/ecFlow-5.5.3/lib/python3.6/site-packages
-  ECFLOW_START=/lfs4/HFIP/hfv3gfs/software/ecFlow-5.5.3/bin/ecflow_start.sh
+  export PATH=/lfs4/HFIP/hfv3gfs/software/ecFlow-5.3.1/bin:$PATH
+  export PYTHONPATH=/lfs4/HFIP/hfv3gfs/software/ecFlow-5.3.1/lib/python2.7/site-packages
+  ECFLOW_START=/lfs4/HFIP/hfv3gfs/software/ecFlow-5.3.1/bin/ecflow_start.sh
   ECF_PORT=$(( $(id -u) + 1500 ))
 
   QUEUE=batch
@@ -302,10 +309,10 @@ elif [[ $MACHINE_ID = jet.* ]]; then
 
 elif [[ $MACHINE_ID = cheyenne.* ]]; then
 
-  module load python/3.7.9
-  export PATH=/glade/p/ral/jntp/tools/ecFlow-5.5.3/bin:$PATH
-  export PYTHONPATH=/glade/p/ral/jntp/tools/ecFlow-5.5.3/lib/python3.7/site-packages
-  ECFLOW_START=/glade/p/ral/jntp/tools/ecFlow-5.5.3/bin/ecflow_start.sh
+  module load python/2.7.16
+  export PATH=/glade/p/ral/jntp/tools/ecFlow-5.3.1/bin:$PATH
+  export PYTHONPATH=/glade/p/ral/jntp/tools/ecFlow-5.3.1/lib/python2.7/site-packages
+  ECFLOW_START=/glade/p/ral/jntp/tools/ecFlow-5.3.1/bin/ecflow_start.sh
   ECF_PORT=$(( $(id -u) + 1500 ))
 
   QUEUE=regular
@@ -411,9 +418,9 @@ if [[ $TESTS_FILE =~ '35d' ]]; then
 fi
 
 if [[ $MACHINE_ID = hera.* ]] || [[ $MACHINE_ID = orion.* ]] || [[ $MACHINE_ID = cheyenne.* ]] || [[ $MACHINE_ID = gaea.* ]] || [[ $MACHINE_ID = jet.* ]]; then
-  RTPWD=${RTPWD:-$DISKNM/NEMSfv3gfs/develop-20210128/${RT_COMPILER^^}}
+  RTPWD=${RTPWD:-$DISKNM/NEMSfv3gfs/develop-20210125/${RT_COMPILER^^}}
 else
-  RTPWD=${RTPWD:-$DISKNM/NEMSfv3gfs/develop-20210128}
+  RTPWD=${RTPWD:-$DISKNM/NEMSfv3gfs/develop-20210125}
 fi
 
 INPUTDATA_ROOT=${INPUTDATA_ROOT:-$DISKNM/NEMSfv3gfs/input-data-20210115}
@@ -771,6 +778,7 @@ else
   [[ ${KEEP_RUNDIR} == false ]] && rm -rf ${RUNDIR_ROOT}
   [[ ${ROCOTO} == true ]] && rm -f ${ROCOTO_XML} ${ROCOTO_DB} *_lock.db
   [[ ${TEST_35D} == true ]] && rm -f tests/cpld_bmark*_20*
+  [[ ${SINGLE_NAME} != '' ]] && rm -f rt.conf.single
 fi
 
 date >> ${REGRESSIONTEST_LOG}
