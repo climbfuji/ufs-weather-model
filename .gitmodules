@@ -1,7 +1,9 @@
 [submodule "FV3"]
   path = FV3
-  url = https://github.com/NOAA-GSL/fv3atm
-  branch = gsl/develop-chem
+  #url = https://github.com/NOAA-GSL/fv3atm
+  #branch = gsl/develop-chem
+  url = https://github.com/climbfuji/fv3atm
+  branch = update_gsl_develop_chem_from_develop
 [submodule "NEMS"]
   path = NEMS
   url = https://github.com/NOAA-EMC/NEMS
@@ -16,8 +18,10 @@
   branch = develop
 [submodule "stochastic_physics"]
   path = stochastic_physics
-  url = https://github.com/NOAA-GSL/stochastic_physics
-  branch = gsl/develop-chem
+  #url = https://github.com/NOAA-GSL/stochastic_physics
+  #branch = gsl/develop-chem
+  url = https://github.com/climbfuji/stochastic_physics
+  branch = update_gsl_develop_chem_from_master
 [submodule "gocart"]
   path = gocart-interface/gocart
   url = https://github.com/NOAA-GSL/GOCART
