@@ -47,6 +47,7 @@ message("STOCH_PHYS ....... ${STOCH_PHYS}")
 message("NEMSdatm ......... ${NEMSdatm}")
 message("CDEPS ............ ${CDEPS}")
 message("CMEPS ............ ${CMEPS}")
+message("GOCART ........... ${GOCART}")
 
 ###############################################################################
 ### Build Options
