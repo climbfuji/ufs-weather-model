@@ -18,10 +18,6 @@
   #branch = gsl/develop-chem
   url = https://github.com/climbfuji/stochastic_physics
   branch = update_gsl_develop_chem_from_master
-[submodule "gocart"]
-  path = gocart-interface/gocart
-  url = https://github.com/NOAA-GSL/GOCART
-  branch = gsl/develop-chem
 [submodule "CMakeModules"]
   path = CMakeModules
   url = https://github.com/NOAA-EMC/CMakeModules
@@ -46,3 +42,9 @@
   path = CDEPS-interface/CDEPS
   url = https://github.com/NOAA-EMC/CDEPS
   branch = develop
+[submodule "GOCART"]
+  path = GOCART
+  #url = https://github.com/NOAA-GSL/GOCART
+  #branch = gsl/develop-chem
+  url = https://github.com/climbfuji/GOCART
+  branch = update_gsl_develop_chem_from_develop
