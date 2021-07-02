@@ -32,7 +32,6 @@ set(STOCH_PHYS      OFF CACHE BOOL "Enable Stochastic Physics")
 set(NEMSdatm        OFF CACHE BOOL "Enable NEMSdatm")
 set(CMEPS           OFF CACHE BOOL "Enable CMEPS")
 set(CDEPS           OFF CACHE BOOL "Enable CDEPS")
-set(GOCART          OFF CACHE BOOL "Enable GOCART")
 
 # Configure selected application specific components
 message("")
@@ -49,7 +48,6 @@ message("STOCH_PHYS ....... ${STOCH_PHYS}")
 message("NEMSdatm ......... ${NEMSdatm}")
 message("CDEPS ............ ${CDEPS}")
 message("CMEPS ............ ${CMEPS}")
-message("GOCART ........... ${GOCART}")
 
 ###############################################################################
 ### Build Options
@@ -196,13 +194,6 @@ endif()
 
 if(CICE6)
   add_subdirectory(CICE-interface)
-endif()
-
-###############################################################################
-### Chemistry Components [GOCART]
-###############################################################################
-if(GOCART)
-  add_subdirectory(gocart-interface)
 endif()
 
 ###############################################################################
