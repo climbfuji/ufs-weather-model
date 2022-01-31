@@ -59,6 +59,10 @@ elif [[ $MACHINE_ID = cheyenne* ]] ; then
         source /glade/u/apps/ch/modulefiles/default/localinit/localinit.sh
     fi
     module purge
+    # Workaround to fix module issues
+    module unuse /glade/u/apps/ch/modulefiles/default/compilers
+    export MODULEPATH_ROOT=/glade/p/ral/jntp/GMTB/tools/compiler_mpi_modules
+    module use /glade/p/ral/jntp/GMTB/tools/compiler_mpi_modules/compilers
 
 elif [[ $MACHINE_ID = stampede* ]] ; then
     # We are on TACC Stampede

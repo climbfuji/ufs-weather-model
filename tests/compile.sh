@@ -46,6 +46,7 @@ BUILD_DIR=$(pwd)/build_${BUILD_NAME}
 
 if [[ $MACHINE_ID == cheyenne.* ]] ; then
     BUILD_JOBS=${BUILD_JOBS:-3}
+    source $PATHTR/tests/module-setup.sh
 elif [[ $MACHINE_ID == wcoss_dell_p3 ]] ; then
     BUILD_JOBS=${BUILD_JOBS:-4}
     source $PATHTR/tests/module-setup.sh
@@ -57,8 +58,11 @@ hostname
 
 set +x
 if [[ $MACHINE_ID == macosx.* ]] || [[ $MACHINE_ID == linux.* ]]; then
+  module use $PATHTR/modulefiles
   source $PATHTR/modulefiles/ufs_${MACHINE_ID}
 else
+  # This should go into module-setup.sh, and another elif section
+  # should be added a few lines up where module-setup.sh gets called  
   # Activate lua environment for gaea
   if [[ $MACHINE_ID == gaea.* ]] ; then
     source /lustre/f2/pdata/esrl/gsd/contrib/lua-5.1.4.9/init/init_lmod.sh

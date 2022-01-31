@@ -6,17 +6,16 @@ proc ModulesHelp {} {
 
 module-whatis "loads UFS Model prerequisites for Orion/Intel"
 
-module load contrib noaatools
+module purge
+module unuse /apps/modulefiles/core
+module use /home/dheinzel/test_modulefiles/core
 
-module load cmake/3.18.1
-module load python/3.7.5
+module use /work/noaa/gsd-hpcs/dheinzel/jcsda/spack-stack-20220131/envs_orion/install/modulefiles/Core
+module load stack-intel/19.1.2
+module load stack-intel-mpi/2019.8.254
+module load stack-python/3.9.2
 
-module use /apps/contrib/NCEP/libs/hpc-stack/modulefiles/stack
-
-module load hpc/1.1.0
-module load hpc-intel/2018.4
-module load hpc-impi/2018.4
-
+module load cmake/3.22.1
 module load ufs_common
 
 setenv CC mpiicc
