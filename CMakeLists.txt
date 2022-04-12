@@ -152,7 +152,8 @@ endif()
 ### AQM
 ###############################################################################
 if(AQM)
-  add_subdirectory(AQM)
+  message(FATAL_ERROR "AQM broken on macOS")
+  #add_subdirectory(AQM)
 endif()
 
 ###############################################################################
