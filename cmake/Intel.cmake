@@ -1,3 +1,5 @@
+message(WARNING "CMAKE_Fortran_FLAGS before anything are '${CMAKE_Fortran_FLAGS}'")
+message(WARNING "CMAKE_C_FLAGS before anything are '${CMAKE_C_FLAGS}'")
 set(CMAKE_Fortran_FLAGS "${CMAKE_Fortran_FLAGS} -g -traceback -fpp -fno-alias -auto -safe-cray-ptr -ftz -assume byterecl -nowarn -sox -align array64byte -qno-opt-dynamic-align")
 set(CMAKE_C_FLAGS "${CMAKE_C_FLAGS} -qno-opt-dynamic-align -sox -fp-model source")
 
@@ -15,8 +17,7 @@ if(DEBUG)
         set(CMAKE_Fortran_FLAGS_DEBUG "${CMAKE_Fortran_FLAGS_DEBUG} -link_mpi=dbg")
       endif()
     endif()
-    set(CMAKE_C_FLAGS_DEBUG "${CMAKE_C_FLAGS_DEBUG} -O0 -ftrapuv -fPIC")
-    set(CMAKE_CXX_FLAGS_DEBUG "-g -fPIC" CACHE STRING "" FORCE)
+    set(CMAKE_C_FLAGS_DEBUG "${CMAKE_C_FLAGS_DEBUG} -O0 -ftrapuv")
 else()
     if(FASTER)
       set(CMAKE_Fortran_FLAGS_RELEASE "-O3 -fp-model precise -assume buffered_stdout -fno-alias -align all -debug minimal -qoverride-limits -ftz -no-ip")
@@ -44,3 +45,6 @@ if(APPLE)
   # Passing the -c flag includes them and fixes an error with undefined symbols
   set(CMAKE_Fortran_ARCHIVE_FINISH "<CMAKE_RANLIB> -c <TARGET>")
 endif()
+
+message(WARNING "CMAKE_Fortran_FLAGS after all this are '${CMAKE_Fortran_FLAGS}'")
+message(WARNING "CMAKE_C_FLAGS after all this are '${CMAKE_C_FLAGS}'")
