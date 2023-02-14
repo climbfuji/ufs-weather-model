@@ -68,7 +68,11 @@ elseif(CICE_IO MATCHES "Binary")
 endif()
 
 ### Create target library and set PUBLIC interfaces on the library
+# DH* FOR TESTING
+#add_library(cice STATIC ${lib_src_files})
 add_library(cice STATIC ${lib_src_files})
+# *DH
+
 set_target_properties(cice PROPERTIES Fortran_MODULE_DIRECTORY ${CMAKE_CURRENT_BINARY_DIR}/mod)
 target_compile_definitions(cice PUBLIC "${_cice_defs}")
 target_include_directories(cice PUBLIC $<BUILD_INTERFACE:${CMAKE_CURRENT_BINARY_DIR}/mod>
