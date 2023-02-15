@@ -58,15 +58,15 @@ endif()
 
 add_library(mom6_nuopc_obj OBJECT ${mom6_nuopc_src_files})
 set_target_properties(mom6_nuopc_obj PROPERTIES Fortran_MODULE_DIRECTORY ${CMAKE_CURRENT_BINARY_DIR}/mod)
-target_include_directories(mom6_nuopc_obj PRIVATE $<BUILD_INTERFACE:${CMAKE_CURRENT_BINARY_DIR}/mod>)
-target_include_directories(mom6_nuopc_obj PRIVATE $<BUILD_INTERFACE:${CMAKE_CURRENT_BINARY_DIR}/../stochastic_physics/mod>)
-target_include_directories(mom6_nuopc_obj PRIVATE $<BUILD_INTERFACE:${CMAKE_CURRENT_SOURCE_DIR}/MOM6/config_src/memory/dynamic_nonsymmetric>
+target_include_directories(mom6_nuopc_obj PUBLIC $<BUILD_INTERFACE:${CMAKE_CURRENT_BINARY_DIR}/mod>)
+target_include_directories(mom6_nuopc_obj PUBLIC $<BUILD_INTERFACE:${CMAKE_CURRENT_BINARY_DIR}/../stochastic_physics/mod>)
+target_include_directories(mom6_nuopc_obj PUBLIC $<BUILD_INTERFACE:${CMAKE_CURRENT_SOURCE_DIR}/MOM6/config_src/memory/dynamic_nonsymmetric>
                                                   $<BUILD_INTERFACE:${CMAKE_CURRENT_SOURCE_DIR}/MOM6/src/framework>)
-target_link_libraries(mom6_nuopc_obj PRIVATE mom6_obj
+target_link_libraries(mom6_nuopc_obj PUBLIC mom6_obj
                                              fms
                                              esmf)
 if(${gsw_FOUND})
-  target_link_libraries(mom6_nuopc_obj PRIVATE PRIVATE gsw)
+  target_link_libraries(mom6_nuopc_obj PUBLIC gsw)
 endif()
 
 # OpenMP is disabled in MOM6
