@@ -11,6 +11,9 @@ endif()
 list(APPEND CMAKE_MODULE_PATH ${CMAKE_SOURCE_DIR}/cmake)
 list(APPEND CMAKE_MODULE_PATH ${CMAKE_SOURCE_DIR}/CMakeModules/Modules)
 
+# By default, build static libraries
+option(BUILD_SHARED_LIBS "Build using shared libraries" OFF)
+
 ###############################################################################
 ### App and Component Options
 ###############################################################################
