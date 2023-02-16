@@ -75,8 +75,8 @@ endif()
 #endif()
 
 ### Create target library and set PUBLIC interfaces on the library
-add_library(mom6 STATIC $<TARGET_OBJECTS:mom6_obj>
-                        $<TARGET_OBJECTS:mom6_nuopc_obj>)
+add_library(mom6 $<TARGET_OBJECTS:mom6_obj>
+                 $<TARGET_OBJECTS:mom6_nuopc_obj>)
 target_include_directories(mom6 PUBLIC $<BUILD_INTERFACE:${CMAKE_CURRENT_BINARY_DIR}/mod>
                                        $<INSTALL_INTERFACE:mod>)
 target_include_directories(mom6 PUBLIC $<BUILD_INTERFACE:${CMAKE_CURRENT_SOURCE_DIR}/MOM6/config_src/memory/dynamic_nonsymmetric>
