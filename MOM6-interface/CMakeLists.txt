@@ -85,6 +85,9 @@ target_link_libraries(mom6 PUBLIC fms
                                   stochastic_physics
                                   esmf
                                   NetCDF::NetCDF_Fortran)
+if(${gsw_FOUND})
+  target_link_libraries(mom6 PUBLIC gsw)
+endif()
 # OpenMP is disabled in MOM6
 #if(OpenMP_Fortran_FOUND)
 #  target_link_libraries(mom6 PRIVATE OpenMP::OpenMP_Fortran)
