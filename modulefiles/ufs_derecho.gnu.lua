@@ -4,14 +4,18 @@ loads UFS Model prerequisites for Derecho/GNU
 
 setenv("LMOD_TMOD_FIND_FIRST","yes")
 
-prepend_path("MODULEPATH", "/lustre/desc1/scratch/heinzell/spst-rel21/envs/ue-gcc-13.3.1/modules/Core")
-
+prepend_path("MODULEPATH", "/opt/cray/pe/modulefiles")
 load("crayenv/25.03")
+
+--prepend_path("MODULEPATH", "/glade/work/epicufsrt/contrib/spack-stack/derecho/spack-stack-2.1.1/envs/ue-gcc-13.3.1/modules/Core")
+prepend_path("MODULEPATH", "/glade/work/epicufsrt/contrib/spack-stack/derecho/spack-stack-2.1.1/envs/ue-gcc-13.3.1-build/modules/Core")
+
 
 stack_gnu_ver=os.getenv("stack_gnu_ver") or "13.3.1"
 load(pathJoin("stack-gcc", stack_gnu_ver))
 
-stack_cray_mpich_ver=os.getenv("stack_cray_mpich_ver") or "8.1.29"
+--stack_cray_mpich_ver=os.getenv("stack_cray_mpich_ver") or "8.1.29"
+stack_cray_mpich_ver=os.getenv("stack_cray_mpich_ver") or "8.1.32"
 load(pathJoin("stack-cray-mpich", stack_cray_mpich_ver))
 
 unload("cray-libsci")
