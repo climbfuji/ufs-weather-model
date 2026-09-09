@@ -2,8 +2,10 @@
   path = UFSATM
   #url = https://github.com/NOAA-EMC/ufsatm
   #branch = develop
-  url = https://github.com/gspetro-NOAA/ufsatm
-  branch = feature/ss2.x
+  #url = https://github.com/gspetro-NOAA/ufsatm
+  #branch = feature/ss2.x
+  url = https://github.com/climbfuji/fv3atm 
+  branch = feature/ss2.x_dom_derecho
 [submodule "WW3"]
   path = WW3
   #url = https://github.com/NOAA-EMC/WW3
